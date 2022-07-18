@@ -16,13 +16,13 @@ import 'types.dart';
 class MapWidgetConfiguration {
   /// Creates a new configuration with all the given settings.
   const MapWidgetConfiguration({
-    required this.initialCameraPosition,
+    this.initialCameraPosition,
     required this.textDirection,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
   });
 
   /// The initial camera position to display.
-  final CameraPosition initialCameraPosition;
+  final CameraPosition? initialCameraPosition;
 
   /// The text direction for the widget.
   final TextDirection textDirection;

@@ -492,9 +492,7 @@ class MethodChannelGoogleMapsFlutter extends GoogleMapsFlutterPlatform {
     MapObjects mapObjects = const MapObjects(),
     Map<String, dynamic> mapOptions = const <String, dynamic>{},
   }) {
-    final Map<String, dynamic> creationParams = <String, dynamic>{
-      'initialCameraPosition':
-          widgetConfiguration.initialCameraPosition.toMap(),
+    Map<String, dynamic> creationParams = <String, dynamic>{
       'options': mapOptions,
       'markersToAdd': serializeMarkerSet(mapObjects.markers),
       'polygonsToAdd': serializePolygonSet(mapObjects.polygons),
@@ -502,6 +500,11 @@ class MethodChannelGoogleMapsFlutter extends GoogleMapsFlutterPlatform {
       'circlesToAdd': serializeCircleSet(mapObjects.circles),
       'tileOverlaysToAdd': serializeTileOverlaySet(mapObjects.tileOverlays),
     };
+
+    final initialCameraPosition = widgetConfiguration.initialCameraPosition;
+    if (initialCameraPosition != null) {
+      creationParams['initialCameraPosition'] = initialCameraPosition.toMap();
+    }
 
     if (defaultTargetPlatform == TargetPlatform.android) {
       if (useAndroidViewSurface) {
@@ -582,7 +585,7 @@ class MethodChannelGoogleMapsFlutter extends GoogleMapsFlutterPlatform {
   Widget buildViewWithTextDirection(
     int creationId,
     PlatformViewCreatedCallback onPlatformViewCreated, {
-    required CameraPosition initialCameraPosition,
+    CameraPosition? initialCameraPosition,
     required TextDirection textDirection,
     Set<Marker> markers = const <Marker>{},
     Set<Polygon> polygons = const <Polygon>{},
@@ -612,7 +615,7 @@ class MethodChannelGoogleMapsFlutter extends GoogleMapsFlutterPlatform {
   Widget buildView(
     int creationId,
     PlatformViewCreatedCallback onPlatformViewCreated, {
-    required CameraPosition initialCameraPosition,
+    CameraPosition? initialCameraPosition,
     Set<Marker> markers = const <Marker>{},
     Set<Polygon> polygons = const <Polygon>{},
     Set<Polyline> polylines = const <Polyline>{},

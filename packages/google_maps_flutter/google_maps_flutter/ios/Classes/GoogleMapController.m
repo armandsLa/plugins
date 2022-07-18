@@ -58,9 +58,14 @@
                viewIdentifier:(int64_t)viewId
                     arguments:(id _Nullable)args
                     registrar:(NSObject<FlutterPluginRegistrar> *)registrar {
+  GMSMapView *mapView;
   GMSCameraPosition *camera =
       [FLTGoogleMapJSONConversions cameraPostionFromDictionary:args[@"initialCameraPosition"]];
-  GMSMapView *mapView = [GMSMapView mapWithFrame:frame camera:camera];
+  if (camera != nil) {
+    mapView = [GMSMapView mapWithFrame:frame camera:camera];
+  } else {
+    mapView = [[GMSMapView alloc] initWithFrame:frame];
+  }
   return [self initWithMapView:mapView viewIdentifier:viewId arguments:args registrar:registrar];
 }
 

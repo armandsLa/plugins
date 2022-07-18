@@ -83,10 +83,9 @@ class AndroidGoogleMapsFlutter {
 class GoogleMap extends StatefulWidget {
   /// Creates a widget displaying data from Google Maps services.
   ///
-  /// [AssertionError] will be thrown if [initialCameraPosition] is null;
   const GoogleMap({
     Key? key,
-    required this.initialCameraPosition,
+    this.initialCameraPosition,
     this.onMapCreated,
     this.gestureRecognizers = const <Factory<OneSequenceGestureRecognizer>>{},
     this.compassEnabled = true,
@@ -119,8 +118,7 @@ class GoogleMap extends StatefulWidget {
     this.onCameraIdle,
     this.onTap,
     this.onLongPress,
-  })  : assert(initialCameraPosition != null),
-        super(key: key);
+  })  : super(key: key);
 
   /// Callback method for when the map is ready to be used.
   ///
@@ -128,7 +126,7 @@ class GoogleMap extends StatefulWidget {
   final MapCreatedCallback? onMapCreated;
 
   /// The initial position of the map's camera.
-  final CameraPosition initialCameraPosition;
+  final CameraPosition? initialCameraPosition;
 
   /// True if the map should show a compass when rotated.
   final bool compassEnabled;

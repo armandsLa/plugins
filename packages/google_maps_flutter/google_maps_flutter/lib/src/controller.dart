@@ -24,7 +24,7 @@ class GoogleMapController {
   /// in [GoogleMap.onMapCreated] callback.
   static Future<GoogleMapController> init(
     int id,
-    CameraPosition initialCameraPosition,
+    CameraPosition? initialCameraPosition,
     _GoogleMapState googleMapState,
   ) async {
     assert(id != null);

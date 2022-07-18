@@ -369,7 +369,7 @@ abstract class GoogleMapsFlutterPlatform extends PlatformInterface {
   Widget buildView(
     int creationId,
     PlatformViewCreatedCallback onPlatformViewCreated, {
-    required CameraPosition initialCameraPosition,
+    CameraPosition? initialCameraPosition,
     Set<Marker> markers = const <Marker>{},
     Set<Polygon> polygons = const <Polygon>{},
     Set<Polyline> polylines = const <Polyline>{},
@@ -397,7 +397,7 @@ abstract class GoogleMapsFlutterPlatform extends PlatformInterface {
   Widget buildViewWithTextDirection(
     int creationId,
     PlatformViewCreatedCallback onPlatformViewCreated, {
-    required CameraPosition initialCameraPosition,
+    CameraPosition? initialCameraPosition,
     required TextDirection textDirection,
     Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers,
     Set<Marker> markers = const <Marker>{},
